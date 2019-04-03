@@ -37,14 +37,9 @@ yargs.command({
             demandOption: true,
             type: 'string'
         },
-        body: {
-            describe: 'note body',
-            demandOption: true,
-            type: 'string'
-        }
     },
     handler: function(argv) {
-        notes.removeNote(argv.title, argv.body)
+        notes.removeNote(argv.title)
     },
 })
 
