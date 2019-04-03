@@ -23,9 +23,7 @@ yargs.command({
         }
     },
     handler: function(argv) {
-        log('Title: ' + argv.title);
-        log('Body: ' + argv.body);
-
+        notes.addNote(argv.title, argv.body)
     },
 })
 
@@ -33,9 +31,21 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'remove a new note',
-    handler: function() {
-        log('Removing a new note!');
-    }
+    builder: {
+        title: {
+            describe: 'note title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'note body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(argv) {
+        notes.removeNote(argv.title, argv.body)
+    },
 })
 
 //create list command
